@@ -7,6 +7,7 @@ import android.content.Loader;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     private RecyclerView listView;
     private View loadingIndicator;
     private Button btnAtualizar;
-    private static String REQUEST_URL = "https://api.themoviedb.org/3/discover/";
+    private static String REQUEST_URL = "https://api.themoviedb.org/3/discover/movie?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,32 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     }
     @Override
     public Loader<List<Filmes>> onCreateLoader(int i, Bundle bundle) {
-        return null;
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("api_key", "e381b13f80612bf79dca68e0c652d549");
+
+        loadingIndicator.setVisibility(View.INVISIBLE);
+        btnAtualizar.setVisibility(View.INVISIBLE);
+        return new FilmeFetcherAsyncTask(this,uriBuilder.toString());    }
+
+
+    @Override
+    public void onLoadFinished(Loader<List<Filmes>> loader, List<Filmes> filmes) {
+        filmesList = filmes;
+        if(filmesList != null && !filmesList.isEmpty() ){
+            fAdapter = new FilmesAdapter(filmesList);
+            listView.setAdapter(fAdapter);
+            loadingIndicator.setVisibility(View.INVISIBLE);
+            btnAtualizar.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<Filmes>> loader) {
+        filmesList = new ArrayList<>();
+        fAdapter = new FilmesAdapter(filmesList);
+        listView.setAdapter(fAdapter);
     }
 
     private void showDialog() throws Resources.NotFoundException {
@@ -78,17 +104,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
                     }})
                 .setNegativeButton(android.R.string.no, null).show();
-
-    }
-
-
-    @Override
-    public void onLoadFinished(Loader<List<Filmes>> loader, List<Filmes> filmes) {
-
-    }
-
-    @Override
-    public void onLoaderReset(Loader<List<Filmes>> loader) {
 
     }
 }
