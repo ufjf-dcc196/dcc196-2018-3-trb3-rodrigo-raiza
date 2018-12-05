@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.rodri.filmesseries.Activity.ListaFilmesActivity;
 import com.example.rodri.filmesseries.Activity.TMDBActivity;
 
 
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });
         btnListaAssistidos = findViewById(R.id.btn_lista_assistidos);
+        btnListaAssistidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ListaFilmesActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
