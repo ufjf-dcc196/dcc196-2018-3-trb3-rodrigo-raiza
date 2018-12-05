@@ -42,8 +42,6 @@ public class FilmeFetcherAsyncTask extends AsyncTaskLoader<List<Filmes>> {
         } catch (IOException e) {
             return null;
         }
-
-
         //Neste ponto fazemos a conversão do JSON para uma lista de objetos do tipo Filmes
         List<Filmes> filmes = FilmeProcessor.process(jsonString);
         return filmes;
