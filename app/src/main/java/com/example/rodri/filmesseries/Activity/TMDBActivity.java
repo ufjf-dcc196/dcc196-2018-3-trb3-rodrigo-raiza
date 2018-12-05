@@ -3,6 +3,7 @@ package com.example.rodri.filmesseries.Activity;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
@@ -85,6 +86,7 @@ public class TMDBActivity extends AppCompatActivity implements LoaderCallbacks<L
         filmesList = filmes;
         if(filmesList != null && !filmesList.isEmpty() ){
             fAdapter = new FilmesAdapter(filmesList);
+            setClickAdapter();
             listView.setAdapter(fAdapter);
             loadingIndicator.setVisibility(View.INVISIBLE);
             btnAtualizar.setVisibility(View.INVISIBLE);
@@ -123,4 +125,16 @@ public class TMDBActivity extends AppCompatActivity implements LoaderCallbacks<L
                 .setNegativeButton(android.R.string.no, null).show();
 
     }
+
+    private void setClickAdapter() {
+        fAdapter.setOnFilmesClickListener(new FilmesAdapter.OnFilmesClickListener() {
+            @Override
+            public void onFilmesClick(View view, int position) {
+                Filmes currentFilme = (Filmes) filmesList.get(position);
+                Intent intent = new Intent(TMDBActivity.this,DetalhesFilmeActivity.class);
+                intent.putExtra("Detalhe Filme", currentFilme);
+                startActivity(intent);
+            }
+        });
+}
 }

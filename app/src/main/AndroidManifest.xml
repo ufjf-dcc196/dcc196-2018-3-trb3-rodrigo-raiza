@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.TMDBActivity"></activity>
+        <activity android:name=".Activity.TMDBActivity" />
+        <activity android:name=".Activity.ListaFilmesActivity" />
+        <activity android:name=".Activity.DetalhesFilmeActivity"></activity>
     </application>
 
 </manifest>

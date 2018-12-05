@@ -1,6 +1,8 @@
 package com.example.rodri.filmesseries.Classe;
 
-public class Filmes {
+import java.io.Serializable;
+
+public class Filmes implements Serializable {
     private String titulo;
     private String id;
     private String popularidade;
