@@ -1,4 +1,6 @@
-package com.example.rodri.filmesseries;
+package com.example.rodri.filmesseries.API;
+
+import com.example.rodri.filmesseries.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

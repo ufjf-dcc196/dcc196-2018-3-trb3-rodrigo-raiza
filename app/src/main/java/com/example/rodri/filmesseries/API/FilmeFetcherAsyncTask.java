@@ -1,7 +1,9 @@
-package com.example.rodri.filmesseries;
+package com.example.rodri.filmesseries.API;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+
+import com.example.rodri.filmesseries.Classe.Filmes;
 
 import java.io.BufferedReader;
 import java.io.IOException;

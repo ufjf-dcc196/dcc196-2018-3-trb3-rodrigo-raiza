@@ -1,4 +1,4 @@
-package com.example.rodri.filmesseries;
+package com.example.rodri.filmesseries.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,6 +13,9 @@ import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.example.rodri.filmesseries.Classe.Filmes;
+import com.example.rodri.filmesseries.R;
+
 import java.util.List;
 
 

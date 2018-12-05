@@ -1,4 +1,6 @@
-package com.example.rodri.filmesseries;
+package com.example.rodri.filmesseries.API;
+
+import com.example.rodri.filmesseries.Classe.Filmes;
 
 import org.json.JSONArray;
 import org.json.JSONException;

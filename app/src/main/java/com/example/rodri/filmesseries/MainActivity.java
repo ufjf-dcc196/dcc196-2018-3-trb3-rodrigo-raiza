@@ -18,6 +18,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.rodri.filmesseries.API.FilmeFetcherAsyncTask;
+import com.example.rodri.filmesseries.Adapter.FilmesAdapter;
+import com.example.rodri.filmesseries.Classe.Filmes;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             listView.setAdapter(fAdapter);
             loadingIndicator.setVisibility(View.INVISIBLE);
             btnAtualizar.setVisibility(View.INVISIBLE);
-        }
+        }else
+            showDialogResult();
     }
 
     @Override
@@ -98,6 +103,18 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         new AlertDialog.Builder(this)
                 .setTitle("Aviso")
                 .setMessage("Favor verificar sua conexão com a internet")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }})
+                .setNegativeButton(android.R.string.no, null).show();
+    }
+
+    private void showDialogResult() throws Resources.NotFoundException {
+        new AlertDialog.Builder(this)
+                .setTitle("Aviso")
+                .setMessage("Resultado Não encontrado")
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

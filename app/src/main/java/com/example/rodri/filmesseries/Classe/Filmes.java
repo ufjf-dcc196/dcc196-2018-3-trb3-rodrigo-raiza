@@ -1,4 +1,4 @@
-package com.example.rodri.filmesseries;
+package com.example.rodri.filmesseries.Classe;
 
 public class Filmes {
     private String titulo;
